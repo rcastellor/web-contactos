@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-header">
+      <span *ngIf="!addMode">Creación de contactos</span>
+      <span *ngIf="addMode">Edición de contactos</span>
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form)" class="compact">
+          <input type="hidden" formControlName="id">
+          <section class="form-block">
+            <div class="form-group">
+              <label for="nombre">
+                Nombre:
+              </label>
+              <input type="text" formControlName="nombre" id="nombre" placeholder="Nombre del contacto" required>
+              <input type="text" formControlName="apellidos" id="apellidos" placeholder="Apellido del contacto" required>
+            </div>
+            <div class="form-group">
+              <label>
+                Email:
+              </label>
+              <input type="text" formControlName="email" placeholder="Email del contacto">
+            </div>
+            <div class="form-group">
+                <label>
+                  Telefono o extensión:
+                </label>
+                <input type="text" formControlName="telefono" placeholder="Teléfono o extensión">
+            </div>
+            <button type="button" (click)="close()" class="btn btn-primary">Cancelar</button>
+            <button type="submit" [disabled]="form.pristine || !form.valid" class="btn btn-primary">Guardar</button>
+          </section>
+        </form>
+      </div>
+    </div>
+  </div>

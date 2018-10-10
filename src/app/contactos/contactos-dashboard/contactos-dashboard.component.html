@@ -1,0 +1,15 @@
+<app-contactos-edit (add)="add($event)" (update)="update($event)"></app-contactos-edit>
+
+<div *ngIf="contactos$ | async as contactos">
+  <div *ngIf="cargando$ | async;else contactosList">
+      <span class="spinner spinner-inline">
+          Loading...
+      </span>
+      <span>
+          Loading...
+      </span>
+  </div>
+  <ng-template #contactosList>
+    <app-contactos-list [contactos]="contactos"></app-contactos-list>
+  </ng-template>
+</div>

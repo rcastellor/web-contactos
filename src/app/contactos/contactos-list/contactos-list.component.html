@@ -1,0 +1,25 @@
+<clr-datagrid >
+    <clr-dg-column [clrDgField]="'id'">ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'nombre'">Nombre</clr-dg-column>
+    <clr-dg-column [clrDgField]="'apellidos'">Apellidos</clr-dg-column>
+    <clr-dg-column [clrDgField]="'email'">Email</clr-dg-column>
+    <clr-dg-column [clrDgField]="'telefono'">Teléfono</clr-dg-column>
+    <clr-dg-row *clrDgItems="let contacto of contactos; let i = index"  [clrDgItem]="contacto">
+      <clr-dg-cell>{{contacto.id}}</clr-dg-cell>
+      <clr-dg-cell>{{contacto.nombre}}</clr-dg-cell>
+      <clr-dg-cell>{{contacto.apellidos}}</clr-dg-cell>
+      <clr-dg-cell>{{contacto.email}}</clr-dg-cell>
+      <clr-dg-cell>{{contacto.telefono}}</clr-dg-cell>
+      <clr-dg-action-overflow>
+          <button class="action-item" (click)="onEditarAplicacion(contacto)">Editar</button>
+          <button class="action-item" (click)="onEliminarAplicacion(contacto)">Borrar</button>
+      </clr-dg-action-overflow>
+    </clr-dg-row>
+    <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="50">
+            <a><clr-icon shape="add-text"></clr-icon></a>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+            of {{pagination.totalItems}} contactos
+        </clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
